@@ -39,7 +39,7 @@ https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository
     
  * Now run the following command from the terminal to create the container
     ~~~
-    docker run -d -v /var/www/sonartest_HOST:/var/www/sonartest_Container -v /opt/sonarqube/data:/opt/sonarqube/data -v /opt/sonarqube/extensions:/opt/sonarqube/extensions --name MFS_SonarQubeContainer -p 9005:9000 sobhanthakur/sonarqubescanner
+    docker run -d -v /var/www/sonartest_HOST:/var/www/sonartest_Container -v /opt/sonarqube/data:/opt/sonarqube/data -v /opt/sonarqube/extensions:/opt/sonarqube/extensions -v /opt/sonarqube/logs:/opt/sonarqube/logs --name MFS_SonarQubeContainer -p 9005:9000 sobhanthakur/sonarqubescanner
     ~~~
     
     * "--name MFS_SonarQubeContainer" : Gives a container name.
@@ -54,6 +54,7 @@ https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository
       
      * "-v /opt/sonarqube/data:/opt/sonarqube/data" : Creates a volume for sonarqube data which contains the analysis details. This volume helps to store these details in the host machine for persistency.
      * "-v /opt/sonarqube/extensions:/opt/sonarqube/extensions" : Creates a volume for sonarqube extensions that contains downloads and plugins and store these plugins persistently in the host machine.
+     * "-v /opt/sonarqube/logs:/opt/sonarqube/logs" : Creates a volume that contains logs for app, web, ComputeEngineServer and SearchServer, and stores in the host machine.
     * "-d" : Allows the container to run in the background.
     * "-p 9005:9000" : Set up port forward
 
