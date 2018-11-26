@@ -39,12 +39,12 @@ https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository
     
  * Now run the following command from the terminal to create the container
     ~~~
-    docker run -d -v /var/www/sonartest_HOST:/var/www/sonartest_Container -v /opt/sonarqube/data:/opt/sonarqube/data -v /opt/sonarqube/extensions:/opt/sonarqube/extensions -v /opt/sonarqube/logs:/opt/sonarqube/logs --name MFS_SonarQubeContainer -p 9005:9000 sobhanthakur/sonarqubescanner
+    docker run -d -v /var/www/path_to_your_project_directory:/var/www/path_inside_Container -v /opt/sonarqube/data:/opt/sonarqube/data -v /opt/sonarqube/extensions:/opt/sonarqube/extensions -v /opt/sonarqube/logs:/opt/sonarqube/logs --name MFS_SonarQubeContainer -p 9005:9000 sobhanthakur/sonarqubescanner
     ~~~
     
     * "--name MFS_SonarQubeContainer" : Gives a container name.
     * "sobhanthakur/sonarqubescanner" : Name of the image
-    * "-v  /var/www/sonartest_HOST:/var/www/sonartest_Container" :  We set up a volume that links the /var/www/sonartest_Container directory from inside the container to the /var/www/html/sonartest_HOST directory on the host machine. 
+    * "-v  /var/www/path_to_your_project_directory:/var/www/path_inside_Container" :  We set up a volume that links the /var/www/path_inside_Container directory from inside the container to the /var/www/html/path_to_your_project_directory directory on the host machine. 
     
         e.g: Suppose the root directory of the project is /var/www/Project and it is mapped with the path /var/www/SonarTest which will be created inside the container, then a link is created between both the paths. So that any changes made within the project directory of the local machine will be reflected directly inside the container.
     
@@ -60,7 +60,7 @@ https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository
 
        The default http port of SonarQube is 9000. This port is mapped with port 9005 of the host machine.
     
- * Hit the following url from the web browser to open SonarQube dashboard. 
+ * Hit the following url from the web browser to open SonarQube dashboard. (It may take a couple of minutes to load due to some background processes)
     ~~~
     http://localhost:9005
     ~~~
